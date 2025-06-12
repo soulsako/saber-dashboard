@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Button from "../components/Button";
+import RegexEditor from "./RegexEditor";
 
 export default function LeftPanel() {
   const [mode, setMode] = useState<"edit" | "approve">("edit");
@@ -30,6 +31,7 @@ export default function LeftPanel() {
           Approve Mode
         </Button>
       </div>
+      {mode === "edit" ? <RegexEditor /> : <h1>Regex Approver</h1>}
     </section>
   );
 }
