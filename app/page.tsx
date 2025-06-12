@@ -1,18 +1,21 @@
-import { RegexProvider } from "./context/RegexContext";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
 
-export const metadata = {
-  title: "Saber Dashboard",
-  description: "Main dashboard to edit and approve regex patterns.",
-  keywords: ["regex", "dashboard", "editor", "approver", "text matching"],
-};
+import { useState } from "react";
+import LeftPanel from "./containers/LeftPanel";
+import MiddlePanel from "./containers/MiddlePanel";
+import { RegexProvider } from "./context/RegexContext";
 
 // This is the main entry point of the Saber Dashboard application.
 export default function Home() {
+  const [text, setText] = useState("");
+
   return (
     <RegexProvider>
       <main className="flex flex-col min-h-screen overflow-hidden">
         <div className="flex flex-1 md:flex-row flex-1 overflow-hidden">
-          Saber Dashboard
+          <LeftPanel />
+          <MiddlePanel setText={setText} />
         </div>
       </main>
     </RegexProvider>
