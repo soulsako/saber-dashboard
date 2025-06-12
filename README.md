@@ -1,4 +1,15 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Saber Dashboard
+
+A front-end dashboard application built with **Vite**, **React**, **TypeScript**, **Tailwind CSS**, and **LocalStorage**. The app is designed to manage and approve regular expression patterns, with support for text extraction and contextual modes.
+
+## ⚙️ Project Setup Instructions
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/your-username/saber-dashboard.git
+   cd saber-dashboard
+   ```
 
 ## Getting Started
 
@@ -20,14 +31,50 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Running Tests
 
-To learn more about Next.js, take a look at the following resources:
+- This project uses [https://vitest.dev/guide/] to provide test coverage. Tests can live anywhere; Vitest automatically picks up [**/*.test.tsx or **/__tests__/*].
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+   npm run test
+   # or
+   npm run test:watch
+   yarn test
+   # or
+   pnpm test
+   # or
+   bun test
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Tech Stack
+
+- **React** (with hooks)
+- **Vite** (for fast bundling)
+- **TypeScript** (strict type safety)
+- **Tailwind CSS** (utility-first styling)
+- **React Context API** (for state management)
+- **LocalStorage** (as a lightweight persistence layer)
+- **React Toastify** (for notifications)
+
+---
+
+## 🤝 Assumptions Made
+
+- This application is designed with a scalable architecture anticipating the need for future features such as:
+
+- User authentication
+
+- Multiple dashboards
+
+- API integration
+
+All code was committed using separate Git branches to enable cleaner collaboration and to make it easier to revert specific changes if necessary. This is based on the assumption that multiple developers will be contributing to this project.
+
+## 🚧 Future Improvements
+
+- Given more time, the following enhancements would be implemented:
+
+- Regex Validation Enhancements: Improve error handling and pattern testing sandbox.
 
 ## Deploy on Vercel
 
