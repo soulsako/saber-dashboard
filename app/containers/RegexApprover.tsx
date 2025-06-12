@@ -53,8 +53,8 @@ export default function RegexApprover({ text }: { text: string }) {
           </span>
         </h3>
         <ul className="border border-borderBase rounded-md divide-y divide-gray-200 overflow-y-auto max-h-64 sm:max-h-96">
-          {matches.length > 0 ? (
-            matches.map((m, i) => (
+          {matches.length > 0 &&
+            matches.map((match, i) => (
               <li
                 key={i}
                 className={`px-4 py-2 ${
@@ -63,12 +63,9 @@ export default function RegexApprover({ text }: { text: string }) {
                     : "bg-[var(--bg-gray-light)]"
                 }`}
               >
-                {m}
+                {match}
               </li>
-            ))
-          ) : (
-            <p className="p-2">No matches found.</p>
-          )}
+            ))}
         </ul>
       </div>
     </div>
