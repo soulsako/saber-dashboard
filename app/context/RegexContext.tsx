@@ -2,6 +2,8 @@
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { useLocalStorageStore } from "../hooks/useLocalStorageStore";
+import { toast } from "react-toastify";
+import { ToastMessages } from "../utils/toastMessages";
 
 export type RegexPattern = {
   value: string;
@@ -30,18 +32,21 @@ export const RegexProvider = ({ children }: { children: ReactNode }) => {
   const addPattern = (pattern: string) => {
     const newPattern: RegexPattern = { value: pattern, approved: false };
     setPatterns([...patterns, newPattern]);
+    toast.success(ToastMessages.REGEX_ADDED);
   };
 
   const editPattern = (index: number, newValue: string) => {
     const updated = [...patterns];
     updated[index] = { value: newValue, approved: false };
     setPatterns(updated);
+    toast.success(ToastMessages.REGEX_UPDATED);
   };
 
   const deletePattern = (index: number) => {
     const updated = [...patterns];
     updated.splice(index, 1);
     setPatterns(updated);
+    toast.success(ToastMessages.REGEX_DELETED);
   };
 
   const approvePattern = (value: string) => {
@@ -49,6 +54,7 @@ export const RegexProvider = ({ children }: { children: ReactNode }) => {
       p.value === value ? { ...p, approved: true } : p
     );
     setPatterns(updated);
+    toast.success(ToastMessages.PATTERN_APPROVED);
   };
 
   return (
@@ -71,7 +77,7 @@ export const RegexProvider = ({ children }: { children: ReactNode }) => {
 export const useRegexContext = () => {
   const context = useContext(RegexContext);
   if (!context) {
-    throw new Error("RuseRegexContext must be used within a RegexProvider");
+    throw new Error(ToastMessages.REGEX_CONTEXT_ERROR);
   }
   return context;
 };

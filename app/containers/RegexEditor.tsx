@@ -5,6 +5,8 @@ import { useState, useEffect, useRef } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import isRegexInputValid from "../helpers/isRegexInputValid";
+import { ToastMessages } from "../utils/toastMessages";
+import { toast } from "react-toastify";
 
 export default function RegexEditor() {
   const { patterns, addPattern, editPattern, deletePattern } =
@@ -22,10 +24,12 @@ export default function RegexEditor() {
 
   const addRegexHandler = () => {
     if (!newPattern.trim()) {
+      toast.error(ToastMessages.REGEX_EMPTY);
       return;
     }
 
     if (!isRegexInputValid(newPattern)) {
+      toast.error(ToastMessages.REGEX_INVALID);
       return;
     }
 
@@ -40,10 +44,12 @@ export default function RegexEditor() {
 
   const saveEdit = (index: number) => {
     if (!editedValue.trim()) {
+      toast.error(ToastMessages.REGEX_EMPTY);
       return;
     }
 
     if (!isRegexInputValid(editedValue)) {
+      toast.error(ToastMessages.REGEX_INVALID);
       return;
     }
 
