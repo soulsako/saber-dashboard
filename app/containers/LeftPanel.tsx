@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import Button from "../components/Button";
 import RegexEditor from "./RegexEditor";
+import RegexApprover from "./RegexApprover";
+import Button from "../components/Button";
 
-export default function LeftPanel() {
+export default function LeftPanel({ text }: { text: string }) {
   const [mode, setMode] = useState<"edit" | "approve">("edit");
 
   return (
@@ -31,7 +32,7 @@ export default function LeftPanel() {
           Approve Mode
         </Button>
       </div>
-      {mode === "edit" ? <RegexEditor /> : <h1>Regex Approver</h1>}
+      {mode === "edit" ? <RegexEditor /> : <RegexApprover text={text} />}
     </section>
   );
 }

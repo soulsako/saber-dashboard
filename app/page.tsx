@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState } from "react";
@@ -14,7 +13,7 @@ export default function Home() {
     <RegexProvider>
       <main className="flex flex-col min-h-screen overflow-hidden">
         <div className="flex flex-1 md:flex-row flex-1 overflow-hidden">
-          <LeftPanel />
+          <LeftPanel text={text} />
           <MiddlePanel setText={setText} />
         </div>
       </main>
