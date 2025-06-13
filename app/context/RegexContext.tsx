@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 import { useLocalStorageStore } from "../hooks/useLocalStorageStore";
 import { toast } from "react-toastify";
 import { ToastMessages } from "../utils/toastMessages";
@@ -23,11 +29,16 @@ type RegexContextType = {
 const RegexContext = createContext<RegexContextType | undefined>(undefined);
 
 export const RegexProvider = ({ children }: { children: ReactNode }) => {
+  const [hydrated, setHydrated] = useState(false);
   const [patterns, setPatterns] = useLocalStorageStore<RegexPattern[]>(
     "regexPatterns",
     []
   );
   const [text, setText] = useState("");
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   const addPattern = (pattern: string) => {
     const newPattern: RegexPattern = { value: pattern, approved: false };
@@ -56,6 +67,9 @@ export const RegexProvider = ({ children }: { children: ReactNode }) => {
     setPatterns(updated);
     toast.success(ToastMessages.PATTERN_APPROVED);
   };
+
+  // 🛡️ Guard: Don't render context until fully hydrated
+  if (!hydrated) return null;
 
   return (
     <RegexContext.Provider
