@@ -19,6 +19,9 @@ export const metadata = {
     template: "%s | Saber",
   },
   description: "A tool to manage and approve regex patterns.",
+};
+
+export const viewport = {
   themeColor: "#ffffff",
 };
 

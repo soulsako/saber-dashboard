@@ -48,9 +48,11 @@ export default function RegexApprover({ text }: { text: string }) {
       <div>
         <h3 className="font-bold mb-2">
           Matches:{" "}
-          <span className="text-sm font-medium">
-            ({matches.length}) matches found
-          </span>
+          {!!matches.length && (
+            <span className="text-sm font-medium">
+              ({matches.length}) matches found
+            </span>
+          )}
         </h3>
         <ul className="border border-borderBase rounded-md divide-y divide-gray-200 overflow-y-auto max-h-64 sm:max-h-96">
           {matches.length > 0 ? (
